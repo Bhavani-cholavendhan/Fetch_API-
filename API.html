@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <button id="btn">GetDetails</button>
+    <div id="show" style="display: none;">
+        <h3 id="title"></h3>
+        <p id="body"></p>
+
+    </div>
+
+
+
+
+
+
+    <script>
+        var url='https://jsonplaceholder.typicode.com/posts/1'
+        async function getDetails() {
+            
+            try {
+                var response = await fetch(url)
+                var data = await response.json()
+                document.getElementById("title").textContent=data.title
+                document.getElementById("body").textContent=data.body
+                document.getElementById("show").style.display="block"
+
+
+                
+            } catch (error) {
+               console.error('Error fetching the post:', error);
+                
+            }
+        }
+        document.getElementById("btn").addEventListener("click",getDetails)
+    </script>
+</body>
+</html>
